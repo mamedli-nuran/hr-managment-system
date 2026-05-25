@@ -1,6 +1,7 @@
 package com.hr.system.employeeservice.controller;
 
 import com.hr.system.employeeservice.dto.request.EmployeeCreateRequest;
+import com.hr.system.employeeservice.dto.request.EmployeeUpdateRequest;
 import com.hr.system.employeeservice.dto.response.EmployeeInfoResponse;
 import com.hr.system.employeeservice.service.EmployeeService;
 import jakarta.validation.Valid;
@@ -31,4 +32,15 @@ public class EmployeeController {
                 .status(HttpStatus.OK)
                 .body(employeeService.getEmployeeById(id));
     }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EmployeeInfoResponse> updateEmployee(
+            @PathVariable UUID id, @RequestBody @Valid EmployeeUpdateRequest request) {
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(employeeService.updateEmployee(id, request));
+    }
+
 }

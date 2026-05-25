@@ -4,7 +4,6 @@ package com.hr.system.employeeservice.mapper;
 import com.hr.system.employeeservice.dto.request.EmployeeCreateRequest;
 import com.hr.system.employeeservice.dto.response.EmployeeInfoResponse;
 import com.hr.system.employeeservice.model.Employee;
-import org.springframework.stereotype.Component;
 
 
 
@@ -12,12 +11,13 @@ public enum EmployeeMapper {
     EMPLOYEE_MAPPER;
 
 
+
     public Employee toEntity(EmployeeCreateRequest employeeCreateRequest) {
         return Employee.builder()
-                .firstName(employeeCreateRequest.getFirstName())
-                .lastName(employeeCreateRequest.getLastName())
-                .email(employeeCreateRequest.getEmail())
-                .position(employeeCreateRequest.getPosition())
+                .firstName(employeeCreateRequest.firstName())
+                .lastName(employeeCreateRequest.lastName())
+                .email(employeeCreateRequest.email())
+                .position(employeeCreateRequest.position())
                 .build();
     }
 
@@ -32,4 +32,5 @@ public enum EmployeeMapper {
                 .hireDate(employee.getHireDate())
                 .build();
     }
+
 }

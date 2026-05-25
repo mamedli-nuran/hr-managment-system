@@ -2,10 +2,9 @@ package com.hr.system.employeeservice.handler;
 
 import com.hr.system.employeeservice.dto.error.ErrorResponse;
 import com.hr.system.employeeservice.exceptions.EmailAlreadyExistsException;
-import com.hr.system.employeeservice.exceptions.ErrorMessage;
+import com.hr.system.employeeservice.exceptions.EmployeeNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.CurrentTimestamp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -18,11 +17,29 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.hr.system.employeeservice.exceptions.ErrorMessage.GLOBAL_ERROR_MESSAGE;
 import static com.hr.system.employeeservice.exceptions.ErrorMessage.UUID_NOT_VALID_FORMAT;
 
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleException(Exception e, HttpServletRequest request) {
+        log.error("Message: ", e);
+
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .message(GLOBAL_ERROR_MESSAGE.getValue())
+                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .error(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase())
+                .path(request.getRequestURI())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(errorResponse);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException e,
@@ -72,7 +89,7 @@ public class GlobalExceptionHandler {
             HttpMessageNotReadableException e,
             HttpServletRequest request) {
 
-        log.warn(e.getMessage());
+        log.warn("Message: ", e);
 
         ErrorResponse response = ErrorResponse.builder()
                 .timestamp(LocalDateTime.now())
@@ -82,7 +99,7 @@ public class GlobalExceptionHandler {
                 .path(request.getRequestURI())
                 .build();
 
-            return ResponseEntity
+        return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(response);
     }
@@ -98,7 +115,25 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST.value())
                 .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
                 .path(request.getRequestURI())
-                .message(String.format(UUID_NOT_VALID_FORMAT.getValue(), e.getName(), e.getRequiredType(),e.getValue()))
+                .message(String.format(UUID_NOT_VALID_FORMAT.getValue(), e.getName(), e.getRequiredType(), e.getValue()))
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(response);
+    }
+
+
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleEmployeeNotFoundException(EmployeeNotFoundException e, HttpServletRequest request) {
+        log.warn(e.getMessage());
+
+        ErrorResponse response = ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .message(e.getMessage())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
+                .path(request.getRequestURI())
                 .build();
 
         return ResponseEntity

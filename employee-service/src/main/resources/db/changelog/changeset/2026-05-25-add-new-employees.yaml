@@ -1,0 +1,306 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Mamedli Nuran
+      context: test or dev
+      changes:
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41001" }
+              - column: { name: first_name, value: "Иван" }
+              - column: { name: last_name, value: "Иванов" }
+              - column: { name: email, value: "ivan.ivanov@company.com" }
+              - column: { name: position, value: "BACKEND_DEVELOPER" }
+              - column: { name: hire_date, value: "2023-01-15" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41002" }
+              - column: { name: first_name, value: "Анна" }
+              - column: { name: last_name, value: "Петрова" }
+              - column: { name: email, value: "anna.petrova@company.com" }
+              - column: { name: position, value: "QA_ENGINEER" }
+              - column: { name: hire_date, value: "2023-02-20" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41003" }
+              - column: { name: first_name, value: "Сергей" }
+              - column: { name: last_name, value: "Сидоров" }
+              - column: { name: email, value: "sergey.sidorov@company.com" }
+              - column: { name: position, value: "PRODUCT_MANAGER" }
+              - column: { name: hire_date, value: "2022-11-01" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41004" }
+              - column: { name: first_name, value: "Елена" }
+              - column: { name: last_name, value: "Смирнова" }
+              - column: { name: email, value: "elena.smirnova@company.com" }
+              - column: { name: position, value: "UI_UX_DESIGNER" }
+              - column: { name: hire_date, value: "2023-05-10" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41005" }
+              - column: { name: first_name, value: "Дмитрий" }
+              - column: { name: last_name, value: "Кузнецов" }
+              - column: { name: email, value: "dmitry.kuznetsov@company.com" }
+              - column: { name: position, value: "FRONTEND_DEVELOPER" }
+              - column: { name: hire_date, value: "2023-03-01" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41006" }
+              - column: { name: first_name, value: "Ольга" }
+              - column: { name: last_name, value: "Попова" }
+              - column: { name: email, value: "olga.popova@company.com" }
+              - column: { name: position, value: "HR_MANAGER" }
+              - column: { name: hire_date, value: "2021-08-15" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41007" }
+              - column: { name: first_name, value: "Алексей" }
+              - column: { name: last_name, value: "Васильев" }
+              - column: { name: email, value: "alexey.vasiliev@company.com" }
+              - column: { name: position, value: "DEVOPS_ENGINEER" }
+              - column: { name: hire_date, value: "2022-04-12" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41008" }
+              - column: { name: first_name, value: "Мария" }
+              - column: { name: last_name, value: "Соколова" }
+              - column: { name: email, value: "maria.sokolova@company.com" }
+              - column: { name: position, value: "BUSINESS_ANALYST" }
+              - column: { name: hire_date, value: "2023-06-01" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41009" }
+              - column: { name: first_name, value: "Михаил" }
+              - column: { name: last_name, value: "Новиков" }
+              - column: { name: email, value: "mikhail.novikov@company.com" }
+              - column: { name: position, value: "DATA_SCIENTIST" }
+              - column: { name: hire_date, value: "2022-09-15" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41010" }
+              - column: { name: first_name, value: "Наталья" }
+              - column: { name: last_name, value: "Федорова" }
+              - column: { name: email, value: "natalia.fedorova@company.com" }
+              - column: { name: position, value: "QA_AUTOMATION" }
+              - column: { name: hire_date, value: "2023-04-18" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41011" }
+              - column: { name: first_name, value: "Александр" }
+              - column: { name: last_name, value: "Морозов" }
+              - column: { name: email, value: "alexander.morozov@company.com" }
+              - column: { name: position, value: "BACKEND_DEVELOPER" }
+              - column: { name: hire_date, value: "2023-07-22" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41012" }
+              - column: { name: first_name, value: "Татьяна" }
+              - column: { name: last_name, value: "Волкова" }
+              - column: { name: email, value: "tatiana.volkova@company.com" }
+              - column: { name: position, value: "CONTENT_MANAGER" }
+              - column: { name: hire_date, value: "2021-12-05" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41013" }
+              - column: { name: first_name, value: "Андрей" }
+              - column: { name: last_name, value: "Лебедев" }
+              - column: { name: email, value: "andrey.lebedev@company.com" }
+              - column: { name: position, value: "TEAM_LEAD" }
+              - column: { name: hire_date, value: "2020-05-20" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41014" }
+              - column: { name: first_name, value: "Ирина" }
+              - column: { name: last_name, value: "Семенова" }
+              - column: { name: email, value: "irina.semenova@company.com" }
+              - column: { name: position, value: "ACCOUNTANT" }
+              - column: { name: hire_date, value: "2019-10-11" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41015" }
+              - column: { name: first_name, value: "Роман" }
+              - column: { name: last_name, value: "Егоров" }
+              - column: { name: email, value: "roman.egorov@company.com" }
+              - column: { name: position, value: "FRONTEND_DEVELOPER" }
+              - column: { name: hire_date, value: "2023-09-01" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41016" }
+              - column: { name: first_name, value: "Кристина" }
+              - column: { name: last_name, value: "Козлова" }
+              - column: { name: email, value: "kristina.kozlova@company.com" }
+              - column: { name: position, value: "RECRUITER" }
+              - column: { name: hire_date, value: "2023-08-15" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41017" }
+              - column: { name: first_name, value: "Артем" }
+              - column: { name: last_name, value: "Степанов" }
+              - column: { name: email, value: "artem.stepanov@company.com" }
+              - column: { name: position, value: "SECURITY_SPECIALIST" }
+              - column: { name: hire_date, value: "2022-07-19" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41018" }
+              - column: { name: first_name, value: "Евгения" }
+              - column: { name: last_name, value: "Николаева" }
+              - column: { name: email, value: "evgenia.nikolaeva@company.com" }
+              - column: { name: position, value: "COPYWRITER" }
+              - column: { name: hire_date, value: "2024-01-10" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41019" }
+              - column: { name: first_name, value: "Николай" }
+              - column: { name: last_name, value: "Макаров" }
+              - column: { name: email, value: "nikolay.makarov@company.com" }
+              - column: { name: position, value: "DATABASE_ADMINISTRATOR" }
+              - column: { name: hire_date, value: "2021-03-14" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41020" }
+              - column: { name: first_name, value: "Дарья" }
+              - column: { name: last_name, value: "Орлова" }
+              - column: { name: email, value: "daria.orlova@company.com" }
+              - column: { name: position, value: "SEO_SPECIALIST" }
+              - column: { name: hire_date, value: "2023-11-20" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41021" }
+              - column: { name: first_name, value: "Владислав" }
+              - column: { name: last_name, value: "Зайцев" }
+              - column: { name: email, value: "vladislav.zaitsev@company.com" }
+              - column: { name: position, value: "SUPPORT_ENGINEER" }
+              - column: { name: hire_date, value: "2024-02-01" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41022" }
+              - column: { name: first_name, value: "Алина" }
+              - column: { name: last_name, value: "Павлова" }
+              - column: { name: email, value: "alina.pavlova@company.com" }
+              - column: { name: position, value: "PROJECT_COORDINATOR" }
+              - column: { name: hire_date, value: "2023-06-15" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41023" }
+              - column: { name: first_name, value: "Павел" }
+              - column: { name: last_name, value: "Голубев" }
+              - column: { name: email, value: "pavel.golubev@company.com" }
+              - column: { name: position, value: "IOS_DEVELOPER" }
+              - column: { name: hire_date, value: "2022-10-10" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41024" }
+              - column: { name: first_name, value: "Юлия" }
+              - column: { name: last_name, value: "Виноградова" }
+              - column: { name: email, value: "yulia.vinogradova@company.com" }
+              - column: { name: position, value: "ANDROID_DEVELOPER" }
+              - column: { name: hire_date, value: "2022-08-25" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41025" }
+              - column: { name: first_name, value: "Максим" }
+              - column: { name: last_name, value: "Богданов" }
+              - column: { name: email, value: "maksim.bogdanov@company.com" }
+              - column: { name: position, value: "SYSTEM_ARCHITECT" }
+              - column: { name: hire_date, value: "2020-01-14" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41026" }
+              - column: { name: first_name, value: "Вероника" }
+              - column: { name: last_name, value: "Воробьева" }
+              - column: { name: email, value: "veronika.vorobieva@company.com" }
+              - column: { name: position, value: "PR_MANAGER" }
+              - column: { name: hire_date, value: "2023-04-01" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41027" }
+              - column: { name: first_name, value: "Денис" }
+              - column: { name: last_name, value: "Федоров" }
+              - column: { name: email, value: "denis.fedorov@company.com" }
+              - column: { name: position, value: "SALES_MANAGER" }
+              - column: { name: hire_date, value: "2022-05-17" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41028" }
+              - column: { name: first_name, value: "Екатерина" }
+              - column: { name: last_name, value: "Беляева" }
+              - column: { name: email, value: "ekaterina.belyaeva@company.com" }
+              - column: { name: position, value: "OFFICE_MANAGER" }
+              - column: { name: hire_date, value: "2024-03-10" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41029" }
+              - column: { name: first_name, value: "Антон" }
+              - column: { name: last_name, value: "Тарасов" }
+              - column: { name: email, value: "anton.tarasov@company.com" }
+              - column: { name: position, value: "SECURITY_ENGINEER" }
+              - column: { name: hire_date, value: "2021-11-11" }
+              - column: { name: status, value: "ACTIVE" }
+        - insert:
+            tableName: employees
+            columns:
+              - column: { name: id, value: "d3b07384-d113-4c4e-9c8e-2e21b7e41030" }
+              - column: { name: first_name, value: "Валерия" }
+              - column: { name: last_name, value: "Белова" }
+              - column: { name: email, value: "valeria.belova@company.com" }
+              - column: { name: position, value: "SCRUM_MASTER" }
+              - column: { name: hire_date, value: "2022-02-22" }
+              - column: { name: status, value: "ACTIVE" }

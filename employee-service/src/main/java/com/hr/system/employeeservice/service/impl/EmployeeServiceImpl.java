@@ -1,6 +1,7 @@
 package com.hr.system.employeeservice.service.impl;
 
 import com.hr.system.employeeservice.dto.request.EmployeeCreateRequest;
+import com.hr.system.employeeservice.dto.request.EmployeeUpdateRequest;
 import com.hr.system.employeeservice.dto.response.EmployeeInfoResponse;
 import com.hr.system.employeeservice.exceptions.EmailAlreadyExistsException;
 import com.hr.system.employeeservice.exceptions.EmployeeNotFoundException;
@@ -18,6 +19,7 @@ import java.util.UUID;
 import static com.hr.system.employeeservice.exceptions.ErrorMessage.EMPLOYEE_NOT_FOUND;
 import static com.hr.system.employeeservice.mapper.EmployeeMapper.EMPLOYEE_MAPPER;
 import static com.hr.system.employeeservice.exceptions.ErrorMessage.EMAIL_ALREADY_EXISTS;
+import static com.hr.system.employeeservice.mapper.EmployeeUpdateMapper.UPDATE_EMPLOYEE_MAPPER;
 
 @Service
 @RequiredArgsConstructor
@@ -29,13 +31,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeInfoResponse addEmployee(EmployeeCreateRequest request) {
-        if (employeeRepository.existsByEmail(request.getEmail())) {
-            log.warn("Failed to add employee. Email already exists: {}", request.getEmail());
+        if (employeeRepository.existsByEmail(request.email())) {
+            log.warn("Failed to add employee. Email already exists: {}", request.email());
             throw new EmailAlreadyExistsException(EMAIL_ALREADY_EXISTS.getValue());
         }
 
         Employee addedEmployee = employeeRepository.save(EMPLOYEE_MAPPER.toEntity(request));
-        log.info("Add a new employee with email:{}", request.getEmail());
+        log.info("Add a new employee with email:{}", request.email());
 
         return EMPLOYEE_MAPPER.toResponse(addedEmployee);
     }
@@ -50,5 +52,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         return EMPLOYEE_MAPPER.toResponse(employee.get());
+    }
+
+    @Override
+    public EmployeeInfoResponse updateEmployee(UUID id, EmployeeUpdateRequest request) {
+        Employee employeeForUpdate = employeeRepository
+                .findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(String.format(EMPLOYEE_NOT_FOUND.getValue(), id)));
+
+        UPDATE_EMPLOYEE_MAPPER.updateEntityFromDto(request, employeeForUpdate);
+
+        return EMPLOYEE_MAPPER.toResponse(employeeForUpdate);
     }
 }

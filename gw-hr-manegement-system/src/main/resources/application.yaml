@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: gw-hr-manegement-system
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: employees
+              uri: http://localhost:8081
+              predicates:
+                - Path=/employees/**
+              filters:
+                - PrefixPath=/api
+                - AddResponseHeader=X-Powered, Nuran Team Gateway Service
+                - Retry=20
+
+
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.netty: DEBUG

@@ -14,6 +14,15 @@ spring:
                 - PrefixPath=/api
                 - AddResponseHeader=X-Powered, Nuran Team Gateway Service
                 - Retry=20
+            - id: payroll
+              uri: http//localhost:8082
+              predicates:
+                - Path=/payroll/**
+              filters:
+                - PrefixPath=/api
+                - AddResponseHeader=X-Powered, Nuran Tean Gateway Service
+                - Retry=20
+
 
 
 

@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Mamedli Nuran
+      changes:
+        - addColumn:
+            tableName: payroll
+            columns:
+              - column:
+                  name: tax
+                  type: numeric(12,2)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false
+              - column:
+                  name: final_salary
+                  type: numeric(12,2)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false

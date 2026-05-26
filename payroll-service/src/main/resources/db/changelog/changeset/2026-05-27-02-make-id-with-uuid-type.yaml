@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20260526-change-payroll-id-to-uuid
+      author: mamed
+
+      changes:
+        - dropTable:
+            tableName: payroll
+
+        - createTable:
+            tableName: payroll
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_payroll_uuid
+                    nullable: false
+
+              - column:
+                  name: employee_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: base_salary
+                  type: numeric(12,2)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: bonus
+                  type: numeric(12,2)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: tax
+                  type: numeric(12,2)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false
+                    
+              - column:
+                  name: final_salary
+                  type: numeric(12,2)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: pay_date
+                  type: date
+                  constraints:
+                    nullable: false
+
+      rollback:
+        - dropTable:
+            tableName: payroll

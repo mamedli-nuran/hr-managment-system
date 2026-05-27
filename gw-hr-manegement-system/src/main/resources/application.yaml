@@ -15,7 +15,7 @@ spring:
                 - AddResponseHeader=X-Powered, Nuran Team Gateway Service
                 - Retry=20
             - id: payroll
-              uri: http//localhost:8082
+              uri: http://localhost:8082
               predicates:
                 - Path=/payroll/**
               filters:

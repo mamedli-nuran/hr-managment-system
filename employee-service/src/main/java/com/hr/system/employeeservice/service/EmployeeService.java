@@ -10,4 +10,5 @@ public interface EmployeeService {
     EmployeeInfoResponse addEmployee(EmployeeCreateRequest request);
     EmployeeInfoResponse getEmployeeById(UUID id);
     EmployeeInfoResponse updateEmployee(UUID id, EmployeeUpdateRequest request);
+    boolean existsById(UUID id);
 }

@@ -1,0 +1,72 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: Mamedli Nuran
+      context: dev
+      changes:
+        - sql:
+            splitStatements: false
+            stripComments: false
+            sql: |
+              DO $$
+              DECLARE
+                  emp_json json := '[
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41001", "base": 3000.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41002", "base": 2000.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41003", "base": 4000.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41004", "base": 2500.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41005", "base": 2800.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41006", "base": 2200.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41007", "base": 3500.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41008", "base": 2600.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41009", "base": 3800.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41010", "base": 2400.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41011", "base": 3100.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41012", "base": 1500.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41013", "base": 5000.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41014", "base": 2000.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41015", "base": 2900.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41016", "base": 1800.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41017", "base": 3200.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41018", "base": 1200.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41019", "base": 3100.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41020", "base": 1800.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41021", "base": 1500.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41022", "base": 2200.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41023", "base": 3200.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41024", "base": 3100.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41025", "base": 5500.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41026", "base": 2300.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41027", "base": 1500.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41028", "base": 1200.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41029", "base": 3200.00},
+                      {"id": "d3b07384-d113-4c4e-9c8e-2e21b7e41030", "base": 3500.00}
+                  ]';
+                  emp record;
+                  months_count int;
+                  bon numeric(12,2);
+                  tax_amt numeric(12,2);
+                  pay_d date;
+              BEGIN
+                  FOR emp IN SELECT * FROM json_to_recordset(emp_json) AS x(id uuid, base numeric)
+                  LOOP
+                      months_count := floor(random() * 11 + 5);
+              
+                      FOR i IN 1..months_count LOOP
+                          bon := round((random() * (emp.base * 0.3))::numeric, 2);
+                          tax_amt := round(((emp.base + bon) * 0.10)::numeric, 2);
+                          pay_d := (date_trunc('month', current_date - (i || ' months')::interval) + interval '1 month' - interval '1 day')::date;
+              
+                          INSERT INTO payroll (id, employee_id, base_salary, bonus, tax, final_salary, pay_date)
+                          VALUES (
+                              gen_random_uuid(), 
+                              emp.id, 
+                              emp.base, 
+                              bon, 
+                              tax_amt, 
+                              emp.base + bon - tax_amt, 
+                              pay_d
+                          );
+                      END LOOP;
+                  END LOOP;
+              END $$;

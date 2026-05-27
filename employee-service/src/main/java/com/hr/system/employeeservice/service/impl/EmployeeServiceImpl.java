@@ -64,4 +64,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         return EMPLOYEE_MAPPER.toResponse(employeeForUpdate);
     }
+
+    @Override
+    public boolean existsById(UUID id) {
+        return employeeRepository.existsById(id);
+    }
 }

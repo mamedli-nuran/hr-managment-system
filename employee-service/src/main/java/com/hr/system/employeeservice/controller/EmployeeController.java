@@ -43,4 +43,11 @@ public class EmployeeController {
                 .body(employeeService.updateEmployee(id, request));
     }
 
+
+    @GetMapping("/{id}/exists")
+    public ResponseEntity<Boolean> checkEmployeeExists(@PathVariable UUID id) {
+        return employeeService.existsById(id) ?
+                ResponseEntity.status(HttpStatus.OK).body(true) : ResponseEntity.status(HttpStatus.OK).body(false);
+    }
+
 }

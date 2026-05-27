@@ -5,3 +5,5 @@ databaseChangeLog:
       file: db/changelog/changeset/2026-05-27-01-edit-payroll-table.yaml
   - include:
       file: db/changelog/changeset/2026-05-27-02-make-id-with-uuid-type.yaml
+  - include:
+      file: db/changelog/changeset/2026-05-27-03-add-new-payrolls.yaml

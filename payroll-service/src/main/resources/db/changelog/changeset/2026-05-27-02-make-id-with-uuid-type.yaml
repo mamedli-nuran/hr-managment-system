@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 20260526-change-payroll-id-to-uuid
+      id: 3
       author: mamed
 
       changes:
@@ -43,7 +43,7 @@ databaseChangeLog:
                   defaultValueNumeric: 0.00
                   constraints:
                     nullable: false
-                    
+
               - column:
                   name: final_salary
                   type: numeric(12,2)

@@ -12,6 +12,7 @@ public class ApplicationConstants {
     public static final String EMAIL_IS_REQUIRED = "Email is required";
     public static final String NOT_VALID_EMAIL = "This is not a valid email address";
     public static final String EMPLOYEE_POSITION_IS_REQUIRED = "Employee position is required";
-
+    public static final String BASE_SALARY_IS_REQUIRED = "Base salary is required";
+    public static final String BASE_SALARY_POSITIVE_OR_ZERO = "Base salary must be positive or zero";
 
 }

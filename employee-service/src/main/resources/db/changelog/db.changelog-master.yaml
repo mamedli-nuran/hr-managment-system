@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/changeset/2026-05-23-init-employee-table.yaml
   - include:
       file: db/changelog/changeset/2026-05-25-add-new-employees.yaml
+  - include:
+      file: db/changelog/changeset/2026-05-27-04-add-base-salary-to-employees.yaml

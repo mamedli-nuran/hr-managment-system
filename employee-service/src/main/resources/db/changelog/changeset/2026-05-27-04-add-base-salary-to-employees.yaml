@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: OpenAI
+      changes:
+        - addColumn:
+            tableName: employees
+            columns:
+              - column:
+                  name: base_salary
+                  type: numeric(12,2)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false
+        - sql:
+            splitStatements: false
+            stripComments: false
+            sql: |
+              UPDATE employees
+              SET base_salary = CASE id
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41001' THEN 3000.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41002' THEN 2000.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41003' THEN 4000.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41004' THEN 2500.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41005' THEN 2800.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41006' THEN 2200.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41007' THEN 3500.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41008' THEN 2600.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41009' THEN 3800.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41010' THEN 2400.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41011' THEN 3100.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41012' THEN 1500.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41013' THEN 5000.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41014' THEN 2000.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41015' THEN 2900.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41016' THEN 1800.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41017' THEN 3200.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41018' THEN 1200.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41019' THEN 3100.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41020' THEN 1800.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41021' THEN 1500.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41022' THEN 2200.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41023' THEN 3200.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41024' THEN 3100.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41025' THEN 5500.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41026' THEN 2300.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41027' THEN 1500.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41028' THEN 1200.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41029' THEN 3200.00
+                  WHEN 'd3b07384-d113-4c4e-9c8e-2e21b7e41030' THEN 3500.00
+                  ELSE base_salary
+              END;

@@ -18,6 +18,7 @@ public enum EmployeeMapper {
                 .lastName(employeeCreateRequest.lastName())
                 .email(employeeCreateRequest.email())
                 .position(employeeCreateRequest.position())
+                .baseSalary(employeeCreateRequest.baseSalary())
                 .build();
     }
 
@@ -28,6 +29,7 @@ public enum EmployeeMapper {
                 .lastName(employee.getLastName())
                 .email(employee.getEmail())
                 .position(employee.getPosition())
+                .baseSalary(employee.getBaseSalary())
                 .status(employee.getStatus())
                 .hireDate(employee.getHireDate())
                 .build();

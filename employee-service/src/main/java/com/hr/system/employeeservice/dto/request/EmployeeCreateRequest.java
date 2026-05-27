@@ -4,7 +4,9 @@ import com.hr.system.employeeservice.model.enums.EmployeePosition;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
+import java.math.BigDecimal;
 
 import static com.hr.system.employeeservice.utill.ApplicationConstants.*;
 
@@ -22,7 +24,11 @@ public record EmployeeCreateRequest(
         String email,
 
         @NotNull(message = EMPLOYEE_POSITION_IS_REQUIRED)
-        EmployeePosition position
+        EmployeePosition position,
+
+        @NotNull(message = BASE_SALARY_IS_REQUIRED)
+        @PositiveOrZero(message = BASE_SALARY_POSITIVE_OR_ZERO)
+        BigDecimal baseSalary
 
 ) {
 }

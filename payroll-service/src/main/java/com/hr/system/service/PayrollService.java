@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface PayrollService {
     List<PayrollInfoResponse> getHistoryByEmployeeId(UUID employeeId);
-    PayrollInfoResponse createPayroll(PayrollCreateRequest payrollCreateRequest);
+    PayrollInfoResponse createPayroll(UUID employeeId, PayrollCreateRequest payrollCreateRequest);
 }

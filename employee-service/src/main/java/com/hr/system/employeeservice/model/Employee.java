@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -40,4 +41,7 @@ public class Employee {
 
     @Enumerated(EnumType.STRING)
     private EmployeePosition position;
+
+    @Column(name = "base_salary")
+    private BigDecimal baseSalary;
 }

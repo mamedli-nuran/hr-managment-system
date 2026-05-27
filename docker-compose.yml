@@ -25,6 +25,19 @@ services:
     volumes:
       - payroll_pgdata:/var/lib/postgresql/data
 
+  postgres-leave-service:
+    image: postgres:15-alpine
+    container_name: hr-postgres-leave
+    environment:
+      POSTGRES_USER: hrms_user
+      POSTGRES_PASSWORD: hrms_password
+      POSTGRES_DB: leave_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - leave_pgdata:/var/lib/postgresql/data
+
 volumes:
   employee_pgdata:
   payroll_pgdata:
+  leave_pgdata:

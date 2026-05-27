@@ -22,6 +22,14 @@ spring:
                 - PrefixPath=/api
                 - AddResponseHeader=X-Powered, Nuran Tean Gateway Service
                 - Retry=20
+            - id: leave
+              uri: http://localhost:8083
+              predicates:
+                - Path=/leaves/**
+              filters:
+                - PrefixPath=/api
+                - AddResponseHeader=X-Powered, Nuran Tean Gateway Service
+                - Retry=20
 
 
 

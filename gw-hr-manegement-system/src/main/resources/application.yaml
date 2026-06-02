@@ -30,6 +30,14 @@ spring:
                 - PrefixPath=/api
                 - AddResponseHeader=X-Powered, Nuran Tean Gateway Service
                 - Retry=20
+            - id:
+              uri: http://localhost:8084
+              predicates:
+                - Path=/auth/**
+              filters:
+                - PrefixPath=/api
+                - AddResponseHeader=X-Powered, Nuran Team Gateway Service
+                - Retry=20
 
 
 
@@ -41,3 +49,5 @@ logging:
     org.springframework.http.server.reactive: DEBUG
     org.springframework.web.reactive: DEBUG
     reactor.netty: DEBUG
+
+kind: Application

@@ -1,14 +1,13 @@
 package com.hr.system.authservice.controller;
 
-import com.hr.system.authservice.auth.RegisterRequest;
-import com.hr.system.authservice.auth.RegisterResponse;
+import com.hr.system.authservice.dto.request.AuthenticateRequest;
+import com.hr.system.authservice.dto.request.RegisterRequest;
+import com.hr.system.authservice.dto.response.RegisterResponse;
 import com.hr.system.authservice.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,6 +21,14 @@ public class AuthController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(authService.register(request));
+    }
+
+
+    @PostMapping("/authonticate")
+    public ResponseEntity<?> login (@RequestBody AuthenticateRequest request){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(authService.authenticate(request));
     }
 
 

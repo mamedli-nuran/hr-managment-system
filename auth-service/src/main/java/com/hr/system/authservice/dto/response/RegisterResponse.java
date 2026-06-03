@@ -1,4 +1,4 @@
-package com.hr.system.authservice.auth;
+package com.hr.system.authservice.dto.response;
 
 import lombok.Builder;
 

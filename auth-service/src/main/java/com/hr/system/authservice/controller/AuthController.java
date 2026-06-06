@@ -24,7 +24,7 @@ public class AuthController {
     }
 
 
-    @PostMapping("/authonticate")
+    @PostMapping("/authenticate")
     public ResponseEntity<?> login (@RequestBody AuthenticateRequest request){
         return ResponseEntity
                 .status(HttpStatus.OK)

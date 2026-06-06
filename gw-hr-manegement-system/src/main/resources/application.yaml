@@ -40,6 +40,8 @@ spring:
                 - Retry=20
 
 
+jwt:
+  JWT_SECRET_KEY: dGhpcy1pcy1hLXNhbXBsZS1zZWNyZXQta2V5LXdpdGgtZW5vdWdoLWxlbmd0aC0zMmJ5dGVzCg==
 
 
 

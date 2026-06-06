@@ -1,9 +1,12 @@
 package com.hr.system.jwt;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.crypto.SecretKey;
 
 
 @Service
@@ -18,11 +21,7 @@ public class JwtService {
         try {
 
             Jwts.parser()
-                    .verifyWith(
-                            Keys.hmacShaKeyFor(
-                                    jwtProperties.JWT_SECRET_KEY().getBytes()
-                            )
-                    )
+                    .verifyWith(getSigningKey())
                     .build()
                     .parseSignedClaims(token);
 
@@ -31,5 +30,10 @@ public class JwtService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    private SecretKey getSigningKey() {
+        byte[] keyBytes = Decoders.BASE64.decode(jwtProperties.secretKey());
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 }

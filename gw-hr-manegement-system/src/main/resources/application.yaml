@@ -41,7 +41,7 @@ spring:
 
 
 jwt:
-  JWT_SECRET_KEY: dGhpcy1pcy1hLXNhbXBsZS1zZWNyZXQta2V5LXdpdGgtZW5vdWdoLWxlbmd0aC0zMmJ5dGVzCg==
+  secret-key: dGhpcy1pcy1hLXNhbXBsZS1zZWNyZXQta2V5LXdpdGgtZW5vdWdoLWxlbmd0aC0zMmJ5dGVzCg==
 
 
 
@@ -52,4 +52,3 @@ logging:
     org.springframework.web.reactive: DEBUG
     reactor.netty: DEBUG
 
-kind: Application

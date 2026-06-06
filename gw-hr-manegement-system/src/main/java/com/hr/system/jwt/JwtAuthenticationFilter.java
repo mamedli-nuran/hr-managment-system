@@ -7,6 +7,7 @@ import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -16,6 +17,8 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
+
+    private static final String BEARER_PREFIX = "Bearer ";
 
     private final JwtService jwtService;
 
@@ -28,25 +31,41 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
-        String path = exchange.getRequest().getURI().getPath();
+        ServerHttpRequest request = exchange.getRequest();
+        String path = request.getURI().getPath();
 
-        System.out.println("PATH = " + path);
+        if (isOpenEndpoint(path)) {
+            return chain.filter(exchange);
+        }
 
-        String auth = exchange.getRequest()
+        String auth = request
                 .getHeaders()
                 .getFirst(HttpHeaders.AUTHORIZATION);
 
-        System.out.println("AUTH HEADER = " + auth);
+        if (auth == null || !auth.startsWith(BEARER_PREFIX)) {
+            return unauthorized(exchange);
+        }
 
-        if (auth == null || !auth.startsWith("Bearer ")) {
-            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-            return exchange.getResponse().setComplete();
+        String token = auth.substring(BEARER_PREFIX.length());
+
+        if (!jwtService.validateToken(token)) {
+            return unauthorized(exchange);
         }
 
         return chain.filter(exchange);
     }
+
     @Override
     public int getOrder() {
         return -1;
+    }
+
+    private boolean isOpenEndpoint(String path) {
+        return openEndpoints.contains(path);
+    }
+
+    private Mono<Void> unauthorized(ServerWebExchange exchange) {
+        exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+        return exchange.getResponse().setComplete();
     }
 }
